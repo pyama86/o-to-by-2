@@ -1,5 +1,8 @@
 class StirUpController < ApplicationController
   def create
-    Rails.logger.info params
+    request = AlexaRubykit::build_request(params)
+    response = AlexaRubykit::Response.new
+    response.add_speech("あれ？小山さん、まだそこの実装やってるんですか？")
+    render json: response.build_response
   end
 end
